@@ -1,0 +1,46 @@
+:root {
+  --clr-neutral-100: hsl(200, 15%, 8%);
+  --clr-neutral-300: hsl(0, 0%, 52%);
+  --clr-neutral-900: hsl(0, 0%, 98%);
+  --clr-neutral-999: hsl(0, 0%, 100%);
+}
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  background: var(--clr-neutral-900);
+  color: var(--clr-neutral-100);
+  font-weight: 300;
+  /* increased line-height for accessibility */
+  line-height: 1.5;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  font-style: italic;
+}
+
+@media only screen and (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+  }
+}
