@@ -75,6 +75,11 @@
   font-size: 0.875rem;
 }
 
+.country:hover {
+  cursor: pointer;
+  scale: 1.025;
+}
+
 .country-flag {
   object-fit: cover;
   margin: 0 auto;

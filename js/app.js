@@ -3,7 +3,7 @@
 // Filtering by the fields that are needed for a slightly faster response
 
 const url =
-  'https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population,independent';
+  'https://restcountries.com/v3.1/independent?status=true&fields=name,flags,capital,region,population';
 
 // fetch(url) returns a promise
 // .then(response) returns an object
@@ -42,6 +42,8 @@ const populateCountryGrid = (data) => {
 
     countryGrid.appendChild(countryContainer);
   });
+
+  console.log(data);
 };
 
 const generateCountryFlag = (country) => {
