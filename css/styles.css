@@ -1,0 +1,92 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: var(--clr-neutral-999);
+  box-shadow: 0 5px 10px -5px rgb(0 0 0 / 10%);
+  padding: 1rem 3rem;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  appearance: none;
+  border: none;
+  background: none;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+}
+
+.search,
+.filter {
+  box-shadow: 0 0 12px -5px rgb(0 0 0 / 20%);
+  appearance: none;
+  border: none;
+  background: var(--clr-neutral-999);
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.search {
+  max-width: 400px;
+  width: 100%;
+}
+
+.filter {
+  max-width: 200px;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: min(1440px, 100% - 3rem);
+  margin: 0 auto;
+}
+
+.country {
+  background: var(--clr-neutral-999);
+  box-shadow: 0 0 12px -5px rgb(0 0 0 / 20%);
+  border-radius: 8px;
+  max-width: 265px;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.country-flag {
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.country-name {
+  font-size: 1.0625rem;
+}
+
+.country-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+}

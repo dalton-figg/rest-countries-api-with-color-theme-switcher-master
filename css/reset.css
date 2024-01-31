@@ -3,6 +3,10 @@
   --clr-neutral-300: hsl(0, 0%, 52%);
   --clr-neutral-900: hsl(0, 0%, 98%);
   --clr-neutral-999: hsl(0, 0%, 100%);
+
+  --fontstack-system-sans: ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --fontstack-primary: 'Nunito Sans', var(--fontstack-system-sans);
 }
 
 *,
@@ -27,6 +31,7 @@ body {
   font-weight: 300;
   /* increased line-height for accessibility */
   line-height: 1.5;
+  font-family: var(--fontstack-primary);
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -37,6 +42,13 @@ img {
   display: block;
   max-width: 100%;
   font-style: italic;
+}
+
+input,
+select,
+textarea {
+  color: var(--clr-neutral-100);
+  font: inherit;
 }
 
 @media only screen and (prefers-reduced-motion: no-preference) {
