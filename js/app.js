@@ -148,17 +148,6 @@ const themeMap = [
   },
 ];
 
-themeSwitch.addEventListener('click', () => switchTheme());
-
-// If user has selected prefers-color-scheme dark mode then switch it by default
-
-if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-  switchTheme();
-}
-
 const switchTheme = () => {
   switch (currTheme) {
     case 'dark':
@@ -180,6 +169,8 @@ const switchTheme = () => {
   }
 };
 
+themeSwitch.addEventListener('click', () => switchTheme());
+
 // --- Additional Details ---
 
 const section = document.getElementById('section');
@@ -193,7 +184,7 @@ document.addEventListener('click', (e) => {
   // Clicked country will only not be null when clicking inside a country
 
   if (clickedCountry) {
-    // 'Swap the pages' 
+    // 'Swap the pages'
     section.hidden = true;
     countryDetails.hidden = false;
     countryDetails.innerHTML = '';
