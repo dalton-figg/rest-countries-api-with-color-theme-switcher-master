@@ -13,7 +13,10 @@ fetch(url)
   .then((response) =>
     response.ok ? response.json() : new Error('Request failed')
   )
-  .then((data) => populateCountryGrid(data));
+  .then((data) => {
+    data = data.sort((a, b) => b.population - a.population);
+    populateCountryGrid(data);
+  });
 
 // Generate each country element
 
@@ -114,11 +117,54 @@ const regionSelection = document.getElementById('region-filter');
 
 regionSelection.addEventListener('change', (e) => {
   let region = e.target.value;
-  for(let i = 0; i < countries.length; i++){
+  for (let i = 0; i < countries.length; i++) {
     let countryRegion = countries[i].children[1].children[2].innerHTML;
     countryRegion = countryRegion.split(' ')[1];
     countries[i].hidden = true;
 
-    if(countryRegion.toLowerCase() === region) countries[i].hidden = false;
+    if (countryRegion.toLowerCase().includes(region) || region === 'all')
+      countries[i].hidden = false;
+  }
+});
+
+// --- Theme Switcher ---
+
+let currTheme = 'dark';
+
+const themeSwitch = document.querySelector('.theme-switcher');
+
+const themeMap = [
+  {
+    property: '--clr-neutral-100',
+    color: 'white',
+  },
+  {
+    property: '--clr-neutral-900',
+    color: 'hsl(207, 26%, 17%)',
+  },
+  {
+    property: '--clr-neutral-999',
+    color: 'hsl(209, 23%, 22%)',
+  },
+];
+
+themeSwitch.addEventListener('click', () => {
+  switch (currTheme) {
+    case 'dark':
+      themeMap.forEach((mapping) => {
+        document.documentElement.style.setProperty(
+          mapping.property,
+          mapping.color
+        );
+      });
+      currTheme = 'light';
+      break;
+
+    case 'light':
+      themeMap.forEach((mapping) => {
+        document.documentElement.style.removeProperty(mapping.property);
+      });
+      currTheme = 'dark';
+      break;
   }
 });
