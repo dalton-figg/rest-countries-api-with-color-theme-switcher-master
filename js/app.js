@@ -13,14 +13,7 @@ fetch(url)
   .then((response) =>
     response.ok ? response.json() : new Error('Request failed')
   )
-  .then((data) => filterCountries(data));
-
-// Filter out non-independent regions so we are left with only countries
-
-const filterCountries = (data) => {
-  data = data.filter((item) => item.independent);
-  populateCountryGrid(data);
-};
+  .then((data) => populateCountryGrid(data));
 
 // Generate each country element
 
@@ -34,7 +27,7 @@ const createElement = (elem, classes, content) => {
   return element;
 };
 
-const populateCountryGrid = (data, searched = null) => {
+const populateCountryGrid = (data) => {
   countryGrid.innerHTML = '';
 
   data.forEach((country) => {
@@ -54,7 +47,7 @@ const populateCountryGrid = (data, searched = null) => {
 const generateCountryFlag = (country) => {
   // Create the flag image and set all the correct attributes
   let countryFlag = createElement('img', ['country-flag']);
-//   countryFlag.width = '265';
+  // countryFlag.width = '265';
   countryFlag.height = '150';
   countryFlag.src = country.flags.png;
   countryFlag.alt = country.flags.alt;
@@ -112,3 +105,18 @@ const updateShownCountries = (searched) => {
       countries[i].hidden = false;
   }
 };
+
+// Filtering
+
+const regionSelection = document.getElementById('region-filter');
+
+regionSelection.addEventListener('change', (e) => {
+  let region = e.target.value;
+  for(let i = 0; i < countries.length; i++){
+    let countryRegion = countries[i].children[1].children[2].innerHTML;
+    countryRegion = countryRegion.split(' ')[1];
+    countries[i].hidden = true;
+
+    if(countryRegion.toLowerCase() === region) countries[i].hidden = false;
+  }
+});
