@@ -129,7 +129,7 @@ regionSelection.addEventListener('change', (e) => {
 
 // --- Theme Switcher ---
 
-let currTheme = 'dark';
+let currTheme = 'light';
 
 const themeSwitch = document.querySelector('.theme-switcher');
 
@@ -148,7 +148,18 @@ const themeMap = [
   },
 ];
 
-themeSwitch.addEventListener('click', () => {
+themeSwitch.addEventListener('click', () => switchTheme());
+
+// If user has selected prefers-color-scheme dark mode then switch it by default
+
+if (
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches
+) {
+  switchTheme();
+}
+
+const switchTheme = () => {
   switch (currTheme) {
     case 'dark':
       themeMap.forEach((mapping) => {
@@ -166,5 +177,26 @@ themeSwitch.addEventListener('click', () => {
       });
       currTheme = 'dark';
       break;
+  }
+};
+
+// --- Additional Details ---
+
+const section = document.getElementById('section');
+const countryDetails = document.getElementById('country-details');
+
+// Listen for any click and get the closest country
+
+document.addEventListener('click', (e) => {
+  let clickedCountry = e.target.closest('.country');
+
+  // Clicked country will only not be null when clicking inside a country
+
+  if (clickedCountry) {
+    // 'Swap the pages' 
+    section.hidden = true;
+    countryDetails.hidden = false;
+    countryDetails.innerHTML = '';
+    countryDetails.appendChild(clickedCountry.cloneNode(true));
   }
 });

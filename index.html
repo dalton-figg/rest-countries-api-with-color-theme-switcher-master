@@ -24,7 +24,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <header class="header">
-      <h1 class="title">Where in the world?</h1>
+      <h1 class="title"><a href="/">Where in the world?</a></h1>
       <button class="theme-switcher">
         <svg viewBox="0 0 24 24" width="24" height="24">
           <path
@@ -35,7 +35,7 @@
       </button>
     </header>
     <main>
-      <section>
+      <section id="section">
         <form class="form-container">
           <label for="country-search" class="sr-only"
             >Search for a country...</label
@@ -58,6 +58,9 @@
           </select>
         </form>
         <div class="grid-container"></div>
+      </section>
+      <section class='grid-container' id="country-details" hidden>
+
       </section>
     </main>
   </body>
